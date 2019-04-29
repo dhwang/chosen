@@ -93,12 +93,13 @@ class Chosen extends AbstractChosen
     @form_field_jq.on "chosen:open.chosen", (evt) => this.container_mousedown(evt); return
     @form_field_jq.on "chosen:close.chosen", (evt) => this.close_field(evt); return
 
-    @search_field.on 'blur.chosen', (evt) => this.input_blur(evt); return
-    @search_field.on 'keyup.chosen', (evt) => this.keyup_checker(evt); return
-    @search_field.on 'keydown.chosen', (evt) => this.keydown_checker(evt); return
-    @search_field.on 'focus.chosen', (evt) => this.input_focus(evt); return
-    @search_field.on 'cut.chosen', (evt) => this.clipboard_event_checker(evt); return
-    @search_field.on 'paste.chosen', (evt) => this.clipboard_event_checker(evt); return
+    if !@disable_search 
+      @search_field.on 'blur.chosen', (evt) => this.input_blur(evt); return
+      @search_field.on 'keyup.chosen', (evt) => this.keyup_checker(evt); return
+      @search_field.on 'keydown.chosen', (evt) => this.keydown_checker(evt); return
+      @search_field.on 'focus.chosen', (evt) => this.input_focus(evt); return
+      @search_field.on 'cut.chosen', (evt) => this.clipboard_event_checker(evt); return
+      @search_field.on 'paste.chosen', (evt) => this.clipboard_event_checker(evt); return
 
     if @is_multiple
       @search_choices.on 'click.chosen', (evt) => this.choices_click(evt); return
