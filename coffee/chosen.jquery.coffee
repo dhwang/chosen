@@ -40,7 +40,8 @@ class Chosen extends AbstractChosen
     @container = ($ "<div />", container_props)
 
     # CSP without 'unsafe-inline' doesn't allow setting the style attribute directly
-    @container.width this.container_width()
+    # getting and setting block width dynamically is a performance drain
+    #@container.width this.container_width()
 
     if @is_multiple
       @container.html this.get_multi_html()
